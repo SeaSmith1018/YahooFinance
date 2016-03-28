@@ -10,3 +10,4 @@ The following files will scrape data from Yahoo Finance:
   * Dependencies
     * `yahoo_recurse.R` = must be loaded into working directory
     * `check_pkgs.R` = built in but can be loaded into working directory and called with source()
+    * `sp500_list.R` = will assemble the data (variables) used in `example.R`
