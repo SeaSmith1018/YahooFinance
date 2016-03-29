@@ -1,4 +1,4 @@
-yahoo_recurse2 <- function(ticker, env = parent.frame()){
+yahoo_recurse2 <- function(ticker, dest){
     
     ##build the url and read it
     url   <- "https://finance.yahoo.com"
@@ -6,5 +6,6 @@ yahoo_recurse2 <- function(ticker, env = parent.frame()){
     end   <- "+Historical+Prices"
     link  <- paste(url, start, ticker, end, sep = "")
     
-    yahoo_csv(link)
+    ##download each ticker's csv file to working directory
+    yahoo_csv()
 }
