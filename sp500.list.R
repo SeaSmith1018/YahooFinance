@@ -1,5 +1,5 @@
 ### import the rvest library
-library(rvest)
+    library(rvest)
 
 ### set the url
     url <- "http://www.cboe.com/products/snp500.aspx"
