@@ -30,4 +30,17 @@ preview
 
 # yahoo.functions2.R EXAMPLE ----------------------------------------------
 
+### load dependencies
+    source("yahoo.functions2.R")
+
+### load S&P500 data and randomly select 5 stocks
+    sp500    <- read.csv("sp500.csv")
+    set.seed(2016)
+    sub      <- sample(1:504, 5)
+    stocks   <- as.character(sp500[sub, 'Ticker'])
+
+### build an lapply() for downloading all 5 stocks' historical prices .CSV file
+    lapply(seq_along(stocks), function(x){
+    yahoo.recurse2(stocks[x])
+    })
 

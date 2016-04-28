@@ -6,8 +6,11 @@
 # Therefore, it MUST be ran within another function.
 
 yahoo.csv <- function(env = parent.frame()){
+    ### load dependencies
+        require(rvest, quietly = T, warn.conflicts = F)
     
     ### get the link
+        print(env$link)
         a           <- env$link %>% read_html() %>% html_nodes("a")
         a.text      <- a %>% html_text()
         a.href      <- a %>% html_attr("href")
@@ -17,10 +20,11 @@ yahoo.csv <- function(env = parent.frame()){
         type      <- "_hist_prices"
         ext       <- ".csv"
         dest.file <- paste(env$ticker, type, ext, sep = "")
-        if(!missing("env$dest") & is.character("env$dest")){
+        if(!is.null("env$dest") & is.character("env$dest")){
             dest.file <- file.path(env$dest, dest.file)
+            print(is.null("env$dest"))
         }
-        
+        print(dest.file)
     ### download the file
         download.file(dwnld.link, dest.file)
 }
@@ -33,7 +37,7 @@ yahoo.csv <- function(env = parent.frame()){
 # yahoo.csv() inherits yahoo.recurse2()'s environment.
 # IF YOU PASS ALONG A DESTINATION FILE TO 'dest' IT WILL DIRECT DOWNLOADS TO THAT FOLDER
 
-yahoo.recurse2 <- function(ticker, dest){
+yahoo.recurse2 <- function(ticker, dest = NULL){
     
     ### build the url and read it
         url   <- "https://finance.yahoo.com"
