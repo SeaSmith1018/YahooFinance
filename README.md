@@ -1,5 +1,9 @@
 ###Scraping Yahoo Finance
 
+> Scraping historical stock prices from Yahoo!
+
+### Info
+
 This repo is dedicated towards functions that can scrape historical stock price data from Yahoo Finance - specifically S&P 500 companies.  
 
 The following files will download the S&P 500 data:
